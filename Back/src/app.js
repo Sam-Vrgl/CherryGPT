@@ -1,15 +1,14 @@
 import express from 'express';
-import apiRoutes from './routes/apiRoutes.js';
 import { errorHandler } from './middlewares/errorMiddleware.js';
 import { config } from './config/envConfig.js';
-
+import testRoutes from './routes/testRoutes.js';
 const app = express();
 
 // Middlewares
 app.use(express.json());
 
 // Routes
-app.use('/api', apiRoutes);
+app.use('/api', testRoutes);
 
 // Health check route
 app.get('/', (req, res) => {
