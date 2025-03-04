@@ -2,6 +2,7 @@ import express from 'express';
 import { errorHandler } from './middlewares/errorMiddleware.js';
 import { config } from './config/envConfig.js';
 import testRoutes from './routes/testRoutes.js';
+import chatRoutes from './routes/chatRoutes.js';
 const app = express();
 
 // Middlewares
@@ -9,6 +10,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api', testRoutes);
+app.use('/chat', chatRoutes);
 
 // Health check route
 app.get('/', (req, res) => {
