@@ -1,8 +1,15 @@
 'use client';
 
 import React from 'react';
+import { useRouter } from 'next/navigation';
+
 
 export default function LandingClient() {
+  const router = useRouter();
+
+  const handleStart = () => {
+    router.push('/registration');
+  };
   return (
     <>
      <div className="container">
@@ -20,7 +27,7 @@ export default function LandingClient() {
           the best tools out there.
         </p>
         <p>Are you ready to start?</p>
-        <button>Yes</button>
+        <button onClick={handleStart}>Yes</button>
       </div>
     </>
   );
