@@ -4,10 +4,12 @@ import { config } from './config/envConfig.js';
 import testRoutes from './routes/testRoutes.js';
 import chatRoutes from './routes/chatRoutes.js';
 import { initializeDB } from './config/dbConfig.js';
+import loggingMiddleware from './middlewares/loggingMiddleware.js';
 
 const app = express();
 
 app.use(express.json());
+app.use(loggingMiddleware);
 
 app.get('/', (req, res) => {
   res.send('API is running!');

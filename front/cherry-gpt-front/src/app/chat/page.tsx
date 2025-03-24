@@ -34,7 +34,7 @@ export default function ChatPage() {
 
     try {
       // Call the external API directly
-      const res = await fetch('http://localhost:3000/chat/respond', {
+      const res = await fetch('http://localhost:3030/chat/respond', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -61,9 +61,6 @@ export default function ChatPage() {
     <div
       style={{
         backgroundColor: '#121212',
-        // Biology-themed background pattern (light grey cells overlay)
-        backgroundImage: "url('https://www.transparenttextures.com/patterns/cells.png')",
-        backgroundRepeat: 'repeat',
         minHeight: '100vh',
         color: '#fff',
         position: 'relative',
@@ -170,7 +167,7 @@ export default function ChatPage() {
       {/* Short paragraph on Cherry Biotech, positioned to the right of the chat */}
       <div
         style={{
-          position: 'absolute',
+          position: 'relative',
           top: '80px',
           right: '1rem',
           maxWidth: '300px',
