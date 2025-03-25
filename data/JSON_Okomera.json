@@ -1,0 +1,32 @@
+[
+  {
+    "Company": "Okomera",
+    "Model": "Droplet-Based 3D Tumor Organoid Platform",
+    "Organs/Tissues": "Patient-derived cancer organoids (breast, lung, Ewing sarcoma, etc.) in microfluidic droplets",
+    "Physiological/Pathological": "Pathological tumor model (PDOs). Also supports healthy/stem-cell lines, but main use is cancer drug testing",
+    "Cell Source": "Primary tumor cells (biopsies), also cell lines or iPSCs. Possible 1–3 cell-type co-culture",
+    "Multiple Cell Types": "Yes, can incorporate tumor + stromal fibroblasts ± immune cells in same droplet",
+    "Stromal Cells": "Yes (co-culture with fibroblasts if desired)",
+    "Tissue-resident Immune": "Possible (tumor-associated macrophages from patient sample) if included",
+    "Circulating Immune": "Yes, T/NK cells can be added to test immunotherapy response",
+    "Crosstalk (Multi-tissue)": "No multi-organ linking, single-tumor environment in each droplet",
+    "Air-Liquid Interface": "No, organoids fully submerged in droplet",
+    "Extracellular Matrix": "Possible hydrogel embed or self-assembly spheroids in microfluidic droplets",
+    "3D Scaffold": "Organoids form scaffold-free or minimal matrix droplet environment",
+    "Notable Features": "Microfluidic droplet array, high-throughput screening of 100s–1000s organoids & multiple drugs. Co-culture & real-time imaging",
+    "Plate/Format (Throughput)": "Custom chip (1 device) can run 100–800 conditions, ~1000 organoids. Very high throughput",
+    "Max Culture Duration": "Days (up to ~1 week) for organoid formation & drug response",
+    "Readouts - Live Imaging": "Yes, integrated automated microscopy for each droplet. AI-based analysis",
+    "Readouts - Supernatant Sampling": "Not typically, droplets are closed microenvironments",
+    "Readouts - Cell Retrieval": "Possible but not standard (droplet-based, complicated to extract organoids)",
+    "Readouts - Whole Tissue": "Small spheroids, typically imaged in situ. No large tissue retrieval",
+    "Readouts - TEER": "No",
+    "Readouts - MEA": "No",
+    "Readouts - Integrated Biosensors": "No, optical readouts with fluorescence/brightfield",
+    "Dead Volume": "Minimal, nanoliter droplets. Very efficient use of cells/reagents",
+    "Perfused": "Not continuous flow. Microfluidics used for droplet generation & merging, but static culture inside droplets",
+    "Gas Mix Controlled": "Standard incubator conditions, chip possibly gas-permeable",
+    "Real-time Microenvironment Control": "Yes, can add compounds or immune cells by droplet merging steps. Not continuous perfusion",
+    "model_availability": "Product-based. Okomera sells the instrument/chips for in-lab high-throughput testing"
+  }
+]

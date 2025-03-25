@@ -1,0 +1,32 @@
+[
+  {
+    "Company": "Cellanyx",
+    "Model": "Ex Vivo Live Tumor Diagnostic (Microfluidic Platform)",
+    "Organs/Tissues": "Patient-derived tumor cells (e.g. prostate, breast, bladder, lung cancers)",
+    "Physiological/Pathological": "Pathological tumor environment ex vivo. Observes intrinsic cell aggressiveness",
+    "Cell Source": "Primary cells from fresh tumor biopsy (no immortalized lines), short-term culture",
+    "Multiple Cell Types": "Mostly tumor epithelial cells; some stromal cells may be present from biopsy",
+    "Stromal Cells": "Not intentionally co-cultured; occasionally present from sample",
+    "Tissue-resident Immune": "No active immune co-culture. Any immune cells are incidental in biopsy",
+    "Circulating Immune": "No",
+    "Crosstalk (Multi-tissue)": "No. Single tissue (tumor) model per chip",
+    "Air-Liquid Interface": "No, cells submerged in microfluidic chamber",
+    "Extracellular Matrix": "Yes, proprietary matrix coating that supports rapid tumor cell adhesion",
+    "3D Scaffold": "Primarily 2D or 2.5D cell arrangement on ECM. Not forming 3D spheroids",
+    "Notable Features": "Live single-cell phenotyping for aggressiveness, short assay (<48h). CLIA diagnostic approach",
+    "Plate/Format (Throughput)": "Custom microfluidic chip (1 sample/chip). Low throughput, clinical test",
+    "Max Culture Duration": "1–2 days for immediate phenotype readout",
+    "Readouts - Live Imaging": "Yes, time-lapse brightfield/fluorescence, AI analysis of cell motility & morphology",
+    "Readouts - Supernatant Sampling": "No. Focus on cell imaging, not secreted factors",
+    "Readouts - Cell Retrieval": "Generally no, final step is imaging-based. Cells may be fixed/stained",
+    "Readouts - Whole Tissue": "Not applicable, no large 3D tissue",
+    "Readouts - TEER": "No",
+    "Readouts - MEA": "No",
+    "Readouts - Integrated Biosensors": "No, imaging-based phenotyping only",
+    "Dead Volume": "Low microfluidic volume",
+    "Perfused": "Static after seeding, minimal fluid exchange",
+    "Gas Mix Controlled": "Standard incubator environment",
+    "Real-time Microenvironment Control": "None. Observe baseline tumor cell behavior on matrix",
+    "model_availability": "Service-based. Each patient sample tested in Cellanyx lab"
+  }
+]

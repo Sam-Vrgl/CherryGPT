@@ -1,0 +1,32 @@
+[
+  {
+    "Company": "Nilogen Oncosystems",
+    "Model": "3D Patient Tumoroid with Intact TME",
+    "Organs/Tissues": "Various solid tumors (e.g. lung, colorectal, melanoma, breast, etc.)",
+    "Physiological/Pathological": "Pathological (human tumor tissue) with preserved immune/stromal context",
+    "Cell Source": "Fresh patient tumor specimens → micro-fragments (tumor + stroma + immune cells)",
+    "Multiple Cell Types": "Yes (tumor cells, fibroblasts, endothelial, immune infiltrates)",
+    "Stromal Cells": "Yes, cancer-associated fibroblasts, etc., from the original tumor",
+    "Tissue-resident Immune": "Yes, tumor-infiltrating lymphocytes, macrophages, etc.",
+    "Circulating Immune": "No intrinsic circulation, but immune cells can be added externally (e.g. PBMCs, CAR-T)",
+    "Crosstalk (Multi-tissue)": "No (single tumor model)",
+    "Air-Liquid Interface": "No (submerged 3D fragments in medium)",
+    "Extracellular Matrix": "Yes (native tumor ECM within each fragment)",
+    "3D Scaffold": "Yes (tumor micro-fragment architecture)",
+    "Notable Features": "Preserves patient-specific TME, short-term ex vivo culture, high-content imaging, immune/tumor interactions",
+    "Plate/Format (Throughput)": "Standard multiwell plates (96-well), moderate/high throughput",
+    "Max Culture Duration": "~3–5 days typical (up to ~1 week) for drug assays",
+    "Readouts - Live Imaging": "Yes (confocal/fluorescence on 3D fragments)",
+    "Readouts - Supernatant Sampling": "Yes (cytokines, etc.)",
+    "Readouts - Cell Retrieval": "Yes (enzymatic dissociation post-treatment)",
+    "Readouts - Whole Tissue": "Yes (fix tumoroids for IHC, immunofluorescence)",
+    "Readouts - TEER": "No",
+    "Readouts - MEA": "No",
+    "Readouts - Integrated Biosensors": "No, external confocal/flow cytometry used",
+    "Dead Volume": "Minimal (static well culture)",
+    "Perfused": "No",
+    "Gas Mix Controlled": "Standard incubator (5% CO2)",
+    "Real-time Microenvironment Control": "Manual dosing, no dynamic flow",
+    "model_availability": "Service only (CRO model using in-house tumoroids)"
+  }
+]

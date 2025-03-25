@@ -1,0 +1,33 @@
+[
+  {
+    "Company": "ExAdEx Innov",
+    "Model": "3D Ex vivo Human Adipose Tissue Model",
+    "Organs/Tissues": "Human subcutaneous fat (mini-explants with native adipocytes, stroma, vasculature)",
+    "Physiological/Pathological": "Both – healthy or induced inflammation/fibrosis/obesity-like states",
+    "Cell Source": "Primary donor adipose tissue (retains all cell types in original fat)",
+    "Multiple Cell Types": "Yes (adipocytes, progenitors, endothelial, fibroblasts, resident immune)",
+    "Stromal Cells": "Yes (native fibroblasts, mesenchymal cells in the tissue)",
+    "Tissue-resident Immune": "Yes, whatever immune cells are present in donor fat (e.g. macrophages)",
+    "Circulating Immune": "No (no perfusion system), though external immune cell addition is possible in static culture",
+    "Crosstalk (Multi-tissue)": "No integrated multi-organ approach; single tissue system",
+    "Air-Liquid Interface": "No, submerged in medium with gentle shaking",
+    "Extracellular Matrix": "Yes, native ECM of the adipose is preserved",
+    "3D Scaffold": "Yes, the original tissue architecture forms the scaffold",
+    "Notable Features": "Viable up to 8 weeks, maintain vascular networks, allows modeling of obesity/fibrosis, real human fat physiology",
+    "Plate/Format (Throughput)": "Static wells/flasks with gentle agitation, low–medium throughput",
+    "Max Culture Duration": "Up to ~8 weeks",
+    "Readouts - Live Imaging": "Possible with confocal on small tissue pieces, but more commonly endpoint",
+    "Readouts - Supernatant Sampling": "Yes (adipokines, cytokines, etc.)",
+    "Readouts - Cell Retrieval": "Yes (enzymatic digestion for flow cytometry, RNA analysis)",
+    "Readouts - Whole Tissue": "Yes (fix for histology/IHC of microtissue)",
+    "Readouts - TEER": "No",
+    "Readouts - MEA": "No",
+    "Readouts - Integrated Biosensors": "No, standard external assays",
+    "Dead Volume": "Minimal, each well volume + tissue chunk",
+    "Perfused": "No. Culture with mild mechanical agitation only",
+    "Gas Mix Controlled": "Standard incubator environment",
+    "Real-time Microenvironment Control": "Manual changes (media, stimuli), no dynamic flow",
+    "model_availability": "Product & Service (ExAdEx provides tissue model or runs assays)"
+  }
+]
+

@@ -1,0 +1,32 @@
+[
+  {
+    "Company": "Demcon Biovitronix",
+    "Model": "Heart–Kidney Multi-Organ Demonstration",
+    "Organs/Tissues": "Human cardiac organoids (iPSC-derived) + kidney organoids (iPSC-derived)",
+    "Physiological/Pathological": "Primarily physiological demonstration of cardiorenal crosstalk; can introduce injury or toxins to simulate pathology",
+    "Cell Source": "hiPSC-derived cardiomyocytes & renal organoids; no immune cells by default",
+    "Multiple Cell Types": "Yes (each organoid contains multiple cell types intrinsic to heart or kidney differentiation)",
+    "Stromal Cells": "Present within organoids (cardiac fibroblasts, renal interstitial cells) but not explicitly engineered",
+    "Tissue-resident Immune": "No (not standard); could be added if needed",
+    "Circulating Immune": "No; system does not typically flow immune cells, though feasible in principle",
+    "Crosstalk (Multi-tissue)": "Yes – heart and kidney organoids connected by fluid flow for multi-organ interaction",
+    "Air-Liquid Interface": "No",
+    "Extracellular Matrix": "Organoids typically embedded in or formed with Matrigel/self-ECM",
+    "3D Scaffold": "Yes; both heart and kidney are 3D organoids",
+    "Notable Features": "Perfusion-based multi-organ co-culture, minimal shear stress, demonstration of organ-specific function (beating heart tissue, albumin uptake in kidney), ~72h stable co-culture",
+    "Plate/Format (Throughput)": "Custom microfluidic chip, single multi-organ circuit, low throughput",
+    "Max Culture Duration": "Demonstrated up to 3 days; potentially extendable with advanced fluidics",
+    "Readouts - Live Imaging": "Yes (observe beating in cardiac organoid, kidney function via labeled markers)",
+    "Readouts - Supernatant Sampling": "Yes (perfusate sampling for biomarkers, if design allows output ports)",
+    "Readouts - Cell Retrieval": "Potentially at endpoint (remove organoids for histology/molecular assays)",
+    "Readouts - Whole Tissue": "Yes (fix organoids post-experiment for IHC, confocal, etc.)",
+    "Readouts - TEER": "No (not a barrier model)",
+    "Readouts - MEA": "No integrated MEA; arrhythmic function assessed visually/metabolically if needed",
+    "Readouts - Integrated Biosensors": "Not in this demo; future designs may integrate sensors",
+    "Dead Volume": "Low due to microfluidic design and gentle pump system",
+    "Perfused": "Yes (continuous flow linking heart & kidney chambers)",
+    "Gas Mix Controlled": "Incubator environment (standard 5% CO₂, 37°C)",
+    "Real-time Microenvironment Control": "Possible via Demcon’s fluidic control (changing flow/drug addition dynamically)",
+    "model_availability": "Engineering demonstration; offered via custom development or collaborative service (not a standard off-the-shelf kit)"
+  }
+]
