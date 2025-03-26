@@ -4,12 +4,31 @@ import { config } from './config/envConfig.js';
 import testRoutes from './routes/testRoutes.js';
 import chatRoutes from './routes/chatRoutes.js';
 import { initializeDB } from './config/dbConfig.js';
-import loggingMiddleware from './middlewares/loggingMiddleware.js';
 
 const app = express();
-
 app.use(express.json());
-app.use(loggingMiddleware);
+
+// Flag to enable or disable logging.
+const ENABLE_LOGGING = true;
+
+if (ENABLE_LOGGING) {
+  app.use((req, res, next) => {
+    const start = Date.now();
+    console.log(`[${new Date().toISOString()}] Incoming ${req.method} ${req.url}`);
+    console.log(`Request body: ${JSON.stringify(req.body)}`);
+
+    // Capture the original send method.
+    const originalSend = res.send.bind(res);
+
+    res.send = (body) => {
+      console.log(`[${new Date().toISOString()}] Response for ${req.method} ${req.url}: ${body}`);
+      console.log(`Duration: ${Date.now() - start}ms`);
+      return originalSend(body);
+    };
+
+    next();
+  });
+}
 
 app.get('/', (req, res) => {
   res.send('API is running!');

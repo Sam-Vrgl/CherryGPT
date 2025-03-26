@@ -3,7 +3,6 @@ import { open } from 'sqlite';
 import path from 'path';
 import fs from 'fs';
 
-
 const dbFolder = path.join(process.cwd(), 'db');
 const dbFile = path.join(dbFolder, 'database.sqlite');
 
@@ -20,6 +19,9 @@ export async function initializeDB() {
   await db.exec(`
     CREATE TABLE IF NOT EXISTS sessions (
       sessionId TEXT PRIMARY KEY,
+      firstName TEXT NOT NULL,
+      lastName TEXT NOT NULL,
+      email TEXT NOT NULL,
       step INTEGER DEFAULT 0
     );
   `);
