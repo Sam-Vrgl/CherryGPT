@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, FormEvent } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 
 interface ChatMessage {
@@ -10,35 +10,48 @@ interface ChatMessage {
 }
 
 export default function ChatPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
   const [sessionId, setSessionId] = useState<string>('');
   const [message, setMessage] = useState<string>('');
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
 
-  // Initialize the session and set the first bot message
+  // Grab sessionId and optional initial bot message from URL query
   useEffect(() => {
-    setSessionId(uuidv4());
-    // First message from the bot to start the conversation
-    setChatHistory([
-      {
-        sender: 'bot',
-        text: 'What aspects of organoid research interest you the most?',
-      },
-    ]);
-  }, []);
+    const sId = searchParams.get('sessionId');
+    const initialBotMessage = searchParams.get('message');
+
+    if (!sId) {
+      // If no sessionId found, redirect to registration or handle error
+      router.push('/registration');
+      return;
+    }
+
+    setSessionId(sId);
+
+    // If the backend returned the first message upon registration,
+    // display it as the first bot message
+    if (initialBotMessage) {
+      setChatHistory([{ sender: 'bot', text: initialBotMessage }]);
+    }
+  }, [router, searchParams]);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!sessionId) return;
 
-    // Append user message to chat
+    // Append user message to the chat
     setChatHistory((prev) => [...prev, { sender: 'user', text: message }]);
 
     try {
-      // Call the external API directly
+      // Call the external API for the next response
       const res = await fetch('http://localhost:3030/chat/respond', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
+        mode: 'cors', // if your backend is configured to allow CORS
         body: JSON.stringify({
           sessionId,
           userResponse: message,
@@ -47,12 +60,12 @@ export default function ChatPage() {
 
       const data = await res.json();
 
-      // Append the bot's response to chat
-      setChatHistory((prev) => [...prev, { sender: 'bot', text: data.botResponse }]);
+      // The backend sends back { "message": "..." }
+      setChatHistory((prev) => [...prev, { sender: 'bot', text: data.message }]);
     } catch (error) {
       console.error('Error calling external API:', error);
     } finally {
-      // Clear input
+      // Clear the input
       setMessage('');
     }
   };
@@ -86,7 +99,7 @@ export default function ChatPage() {
         />
         <div>
           <div style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
-            Organoid research helper
+            Organoid Research Helper
           </div>
           <div style={{ fontSize: '0.8rem', color: '#ccc' }}>
             (powered by CherryBiotech)
@@ -130,6 +143,7 @@ export default function ChatPage() {
               </div>
             ))}
           </div>
+
           <form onSubmit={handleSubmit} style={{ display: 'flex' }}>
             <input
               type="text"
@@ -164,7 +178,7 @@ export default function ChatPage() {
         </div>
       </div>
 
-      {/* Short paragraph on Cherry Biotech, positioned to the right of the chat */}
+      {/* Short paragraph on Cherry Biotech, positioned to the right (optional) */}
       <div
         style={{
           position: 'relative',

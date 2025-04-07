@@ -1,3 +1,4 @@
+// src/app/pages/landing.tsx
 'use client';
 
 import React from 'react';

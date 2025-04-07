@@ -4,10 +4,13 @@ import { config } from './config/envConfig.js';
 import testRoutes from './routes/testRoutes.js';
 import chatRoutes from './routes/chatRoutes.js';
 import { initializeDB } from './config/dbConfig.js';
+import cors from 'cors';
+
 
 const app = express();
 app.use(express.json());
 
+app.use(cors());
 // Flag to enable or disable logging.
 const ENABLE_LOGGING = true;
 

@@ -1,45 +1,63 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { v4 as uuidv4 } from 'uuid';
 import Image from 'next/image';
 
 export default function RegistrationPage() {
+  const router = useRouter();
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     email: '',
   });
 
-interface FormData {
-    firstName: string;
-    lastName: string;
-    email: string;
-}
-
-interface ChangeEvent {
-    target: {
-        name: string;
-        value: string;
-    };
-}
-
-interface SubmitEvent {
-    preventDefault: () => void;
-}
-
-const handleSubmit = (e: SubmitEvent) => {
-    e.preventDefault();
-    // Add your registration logic here (e.g., API call)
-    console.log('Registration data:', formData);
-};
-
-const handleChange = (e: ChangeEvent) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData((prev: FormData) => ({
-        ...prev,
-        [name]: value,
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
     }));
-};
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    // Generate a session ID on the client (the backend expects us to send one)
+    const newSessionId = uuidv4();
+
+    try {
+      // Call the "start" endpoint on your backend
+      const res = await fetch('http://localhost:3030/chat/start', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        mode: 'cors', // if your backend is configured to allow CORS
+        body: JSON.stringify({
+          sessionId: newSessionId,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error(`Registration failed with status ${res.status}`);
+      }
+
+      const data = await res.json();
+      // data.message should be something like "What aspects of organoid research interest you the most?"
+
+      // Redirect to chat page, passing sessionId and the initial bot message
+      router.push(`/chat?sessionId=${newSessionId}&message=${encodeURIComponent(data.message)}`);
+    } catch (error) {
+      console.error('Error starting conversation:', error);
+      alert('Error starting conversation. Please try again.');
+    }
+  };
 
   return (
     <div

@@ -35,23 +35,19 @@ export async function respondToConversation(req, res) {
       return res.status(400).json({ error: "Invalid session. Start a new conversation." });
     }
 
-    // Insert the user's response into the conversation history.
     await db.run(
       `INSERT INTO conversation (sessionId, role, message) VALUES (?, ?, ?)`,
       [sessionId, 'user', userResponse]
     );
 
-    // If we've reached 5 steps, generate a final reply with recommendations.
     if (session.step >= 5) {
       const conversation = await db.all(
         `SELECT role, message FROM conversation WHERE sessionId = ? ORDER BY createdAt ASC`,
         [sessionId]
       );
 
-      // Generate a final reply that includes recommendations for organoid models and optimizations.
       const finalReply = await getFinalRecommendations(conversation);
 
-      // Store the final reply in the conversation history.
       await db.run(
         `INSERT INTO conversation (sessionId, role, message) VALUES (?, ?, ?)`,
         [sessionId, 'ai', finalReply]
@@ -59,24 +55,19 @@ export async function respondToConversation(req, res) {
 
       return res.json({ message: finalReply });
     } else {
-      // If under 5 steps, continue the conversation.
 
-      // Retrieve the entire conversation history.
       const conversation = await db.all(
         `SELECT role, message FROM conversation WHERE sessionId = ? ORDER BY createdAt ASC`,
         [sessionId]
       );
 
-      // Generate the next question from the AI.
       const nextQuestion = await getAIResponse(conversation);
 
-      // Insert the AI's question into the conversation.
       await db.run(
         `INSERT INTO conversation (sessionId, role, message) VALUES (?, ?, ?)`,
         [sessionId, 'ai', nextQuestion]
       );
 
-      // Increment the session step.
       await db.run(
         `UPDATE sessions SET step = step + 1 WHERE sessionId = ?`,
         [sessionId]
