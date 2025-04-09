@@ -1,4 +1,5 @@
 import { getAIResponse } from "../services/chatService.js";
+import { getFinalRecommendations } from "../services/chatService.js";
 
 export async function startConversation(req, res) {
   const { sessionId, firstName, lastName, email } = req.body;
@@ -40,7 +41,7 @@ export async function respondToConversation(req, res) {
       [sessionId, 'user', userResponse]
     );
 
-    if (session.step >= 5) {
+    if (session.step >= 6) {
       const conversation = await db.all(
         `SELECT role, message FROM conversation WHERE sessionId = ? ORDER BY createdAt ASC`,
         [sessionId]

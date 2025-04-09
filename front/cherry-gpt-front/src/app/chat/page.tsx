@@ -179,24 +179,7 @@ export default function ChatPage() {
       </div>
 
       {/* Short paragraph on Cherry Biotech, positioned to the right (optional) */}
-      <div
-        style={{
-          position: 'relative',
-          top: '80px',
-          right: '1rem',
-          maxWidth: '300px',
-          color: '#fff',
-          fontSize: '0.9rem',
-          lineHeight: '1.4',
-        }}
-      >
-        <p>
-          Cherry Biotech is a pioneering biotechnology company specializing in advanced
-          microfluidic and thermal control solutions. Our mission is to empower organoid
-          research by providing precise, reliable tools that facilitate complex in vitro
-          models, fostering cutting-edge discoveries in biomedical science.
-        </p>
-      </div>
+
     </div>
   );
 }
