@@ -1,5 +1,6 @@
 import { getAIResponse } from "../services/chatService.js";
 import { getFinalRecommendations } from "../services/chatService.js";
+import { getAssitantFileSearch } from "../services/chatService.js";
 
 export async function startConversation(req, res) {
   const { sessionId, firstName, lastName, email } = req.body;
@@ -82,3 +83,32 @@ export async function respondToConversation(req, res) {
   }
 }
 
+export async function endReccomendation(req, res){
+  const { sessionId, conversationRecap } = req.body;
+  if (!sessionId || !conversationRecap) {
+    return res.status(400).json({ error: "Session ID and conversation recap required." });
+  }
+  const db = req.app.locals.db;
+  const assistantRecap = await getAssitantFileSearch(conversationRecap);
+  try {
+    // const session = await db.get(`SELECT * FROM sessions WHERE sessionId = ?`, [sessionId]);
+    // if (!session) {
+    //   return res.status(400).json({ error: "Invalid session. Start a new conversation." });
+    // }
+
+    // await db.run(
+    //   `INSERT INTO conversation (sessionId, role, message) VALUES (?, ?, ?)`,
+    //   [sessionId, 'user', conversationRecap]
+    // );
+
+    // await db.run(
+    //   `INSERT INTO conversation (sessionId, role, message) VALUES (?, ?, ?)`,
+    //   [sessionId, 'ai', assistantRecap]
+    // );
+
+    res.json({ message: assistantRecap });
+  } catch (error) {
+    console.error("Error ending recommendation:", error);
+    res.status(500).json({ error: "Internal server error." });
+  }
+}

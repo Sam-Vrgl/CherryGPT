@@ -21,15 +21,6 @@ export default function Page() {
           alignItems: 'center',
         }}
       >
-        {/* Logo (commented out or add if needed)
-        <Image
-          src="/logo.png"
-          alt="Logo"
-          width={50}
-          height={50}
-          style={{ marginRight: '0.5rem' }}
-        />
-        */}
         <div>
           <div style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
             Organoid Research Helper
@@ -39,8 +30,6 @@ export default function Page() {
           </div>
         </div>
       </header>
-
-      {/* Centered content */}
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '80px' }}>
         <div
           style={{
@@ -67,7 +56,6 @@ export default function Page() {
           </p>
           <p style={{ textAlign: 'center' }}>Are you ready to start?</p>
 
-          {/* Updated: Link to registration instead of chat */}
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
             <Link href="/registration">
               <button

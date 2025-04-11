@@ -24,18 +24,15 @@ export default function RegistrationPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    // Generate a session ID on the client (the backend expects us to send one)
     const newSessionId = uuidv4();
 
     try {
-      // Call the "start" endpoint on your backend
       const res = await fetch('http://localhost:3030/chat/start', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        mode: 'cors', // if your backend is configured to allow CORS
+        mode: 'cors',
         body: JSON.stringify({
           sessionId: newSessionId,
           firstName: formData.firstName,
@@ -49,9 +46,6 @@ export default function RegistrationPage() {
       }
 
       const data = await res.json();
-      // data.message should be something like "What aspects of organoid research interest you the most?"
-
-      // Redirect to chat page, passing sessionId and the initial bot message
       router.push(`/chat?sessionId=${newSessionId}&message=${encodeURIComponent(data.message)}`);
     } catch (error) {
       console.error('Error starting conversation:', error);
@@ -70,7 +64,6 @@ export default function RegistrationPage() {
         position: 'relative',
       }}
     >
-      {/* Header with Next.js Image */}
       <header style={{ padding: '1rem', position: 'absolute', top: 0, left: 0, display: 'flex', alignItems: 'center' }}>
         <Image
           src="/logo.png"
@@ -89,7 +82,6 @@ export default function RegistrationPage() {
         </div>
       </header>
 
-      {/* Centered form container */}
       <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '80px' }}>
         <div style={{ width: '100%', maxWidth: '600px', padding: '1rem' }}>
           <div style={{ border: '1px solid #444', padding: '1rem', backgroundColor: '#1e1e1e', borderRadius: '8px' }}>

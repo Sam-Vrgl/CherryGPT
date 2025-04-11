@@ -1,9 +1,7 @@
-// src/app/pages/landing.tsx
 'use client';
 
 import React from 'react';
 import Link from 'next/link';
-// import Image from 'next/image'; // Commented out for now
 
 export default function LandingClient() {
   return (
@@ -16,7 +14,6 @@ export default function LandingClient() {
         position: 'relative',
       }}
     >
-      {/* Header with logo commented out */}
       <header
         style={{
           padding: '1rem',
@@ -27,15 +24,6 @@ export default function LandingClient() {
           alignItems: 'center',
         }}
       >
-        {/*
-        <Image
-          src="/logo.png"
-          alt="Logo"
-          width={50}
-          height={50}
-          style={{ marginRight: '0.5rem' }}
-        />
-        */}
         <div>
           <div style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
             Organoid Research Helper
@@ -46,7 +34,6 @@ export default function LandingClient() {
         </div>
       </header>
 
-      {/* Centered content */}
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '80px' }}>
         <div
           style={{

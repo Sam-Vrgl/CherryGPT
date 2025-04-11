@@ -177,9 +177,6 @@ export default function ChatPage() {
           </form>
         </div>
       </div>
-
-      {/* Short paragraph on Cherry Biotech, positioned to the right (optional) */}
-
     </div>
   );
 }
