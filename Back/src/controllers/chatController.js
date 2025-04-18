@@ -41,7 +41,7 @@ export async function respondToConversation(req, res) {
       [sessionId, 'user', userResponse]
     );
 
-    if (session.step >= 3) {
+    if (session.step >= 4) {
       const conversation = await db.all(
         `SELECT role, message FROM conversation WHERE sessionId = ? ORDER BY createdAt ASC`,
         [sessionId]
