@@ -1,7 +1,4 @@
-import axios from "axios";
-import { config } from "../config/envConfig.js";
 import OpenAI from "openai";
-import { create } from "domain";
 
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;

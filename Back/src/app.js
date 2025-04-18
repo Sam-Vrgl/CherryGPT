@@ -19,8 +19,6 @@ if (ENABLE_LOGGING) {
     const start = Date.now();
     console.log(`[${new Date().toISOString()}] Incoming ${req.method} ${req.url}`);
     console.log(`Request body: ${JSON.stringify(req.body)}`);
-
-    // Capture the original send method.
     const originalSend = res.send.bind(res);
 
     res.send = (body) => {

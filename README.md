@@ -3,7 +3,8 @@
 ## Guide d'utilisation:
 - Télécharger le repo depuis [github](https://github.com/Sam-Vrgl/CherryGPT)
 - Télécharger et installer [Node.js](https://nodejs.org/en/download)
-- Créer un compte OpenAI API, créer un vector store contentant les fichiers json contenus dans data, créer un assistant avec l'outil file search activé (et l'ID du vector store approprié) avec le prompt suivant:
+- Créer un compte OpenAI API et un projet pour cet outil, générer une clé API et la conserver dans un endroit secret (la clé n'est consultable qu'une seule fois) 
+- Créer un vector store contentant les fichiers json contenus dans data, créer un assistant avec l'outil file search activé (et l'ID du vector store approprié) avec le prompt suivant:
 
     You are an AI assistant designed to guide researchers in selecting the most suitable in vitro 3D biological models (organoids or organ-on-a-chip). 
         You will receive: A concise recap of the user’s conversation containing   their specific organoid or organ-on-a-chip needs.
