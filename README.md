@@ -1,7 +1,7 @@
 # CherryGPT
 
 ## Guide d'utilisation:
-- Télécharger le repo depuis ([github](https://github.com/Sam-Vrgl/CherryGPT))
+- Télécharger le repo depuis [github](https://github.com/Sam-Vrgl/CherryGPT)
 - Télécharger et installer [Node.js](https://nodejs.org/en/download)
 - Dans le dossier, créer un fichier texte nommé .env avec le contenu suivant:
 
