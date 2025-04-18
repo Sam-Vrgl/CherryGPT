@@ -109,12 +109,12 @@ export default function ChatPage() {
 
       {/* Centered chat container */}
       <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '80px' }}>
-        <div style={{ width: '100%', maxWidth: '600px', padding: '1rem' }}>
+        <div style={{ width: '100%', maxWidth: '1200px', padding: '1rem' }}>
           <div
             style={{
               border: '1px solid #444',
               padding: '1rem',
-              height: '400px',
+              height: '600px',
               overflowY: 'scroll',
               marginBottom: '1rem',
               backgroundColor: '#1e1e1e',

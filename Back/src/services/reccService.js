@@ -18,10 +18,8 @@ const openai = new OpenAI({ apiKey: OPENAI_API_KEY });
 
 export async function getRecommendations(recap) {
 
-    //create a new thread
     const thread = await openai.beta.threads.create();
 
-    //create a new message in the thread with the user prompt
     await openai.beta.threads.messages.create(thread.id, {
         role: "user",
         content: recap.toString(),
@@ -34,7 +32,6 @@ export async function getRecommendations(recap) {
     const start = Date.now();
     const timeout = 300000; // 5 minutes
     while (run.status !== "completed" && run.status !== "failed" && Date.now() - start < timeout) {
-        // wait 1 second before polling again
         await new Promise((resolve) => setTimeout(resolve, 1000));
         run = await openai.beta.threads.runs.retrieve(thread.id, run.id);
     }
@@ -46,7 +43,6 @@ export async function getRecommendations(recap) {
         throw new Error("Assistant run did not complete in time");
     }
 
-    // 5. Retrieve messages and find the assistant's reply
     const messages = await openai.beta.threads.messages.list(thread.id);
     const assistantMessage = messages.data.find((m) => m.role === "assistant");
     if (!assistantMessage || !assistantMessage.content?.[0]?.text?.value) {
@@ -58,7 +54,5 @@ export async function getRecommendations(recap) {
 
 export async function fullConversationTest(sessionID) {
     const thread = await openai.beta.threads.create();
-    
-
 }
 

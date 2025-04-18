@@ -1,6 +1,6 @@
 import { getAIResponse } from "../services/chatService.js";
 import { getFinalRecommendations } from "../services/chatService.js";
-import { getAssitantFileSearch } from "../services/chatService.js";
+import { runAssistantThread } from "../controllers/reccController.js";
 
 export async function startConversation(req, res) {
   const { sessionId, firstName, lastName, email } = req.body;
@@ -16,7 +16,7 @@ export async function startConversation(req, res) {
       `INSERT INTO sessions (sessionId, firstName, lastName, email, step) VALUES (?, ?, ?, ?, ?)`,
       [sessionId, firstName, lastName, email, 0]
     );
-    res.json({ message: "What aspects of organoid research interest you the most?" });
+    res.json({ message: "Hello and Welcome to the Organoid reccomendation tool, what kind of organ would you like to know more about today?" });
   } catch (error) {
     console.error("Error starting conversation:", error);
     res.status(500).json({ error: "Failed to start session." });
@@ -42,7 +42,7 @@ export async function respondToConversation(req, res) {
       [sessionId, 'user', userResponse]
     );
 
-    if (session.step >= 6) {
+    if (session.step >= 3) {
       const conversation = await db.all(
         `SELECT role, message FROM conversation WHERE sessionId = ? ORDER BY createdAt ASC`,
         [sessionId]
@@ -84,31 +84,31 @@ export async function respondToConversation(req, res) {
 }
 
 export async function endReccomendation(req, res){
-  const { sessionId, conversationRecap } = req.body;
-  if (!sessionId || !conversationRecap) {
-    return res.status(400).json({ error: "Session ID and conversation recap required." });
-  }
-  const db = req.app.locals.db;
-  const assistantRecap = await getAssitantFileSearch(conversationRecap);
-  try {
-    // const session = await db.get(`SELECT * FROM sessions WHERE sessionId = ?`, [sessionId]);
-    // if (!session) {
-    //   return res.status(400).json({ error: "Invalid session. Start a new conversation." });
-    // }
+  // const { sessionId, conversationRecap } = req.body;
+  // if (!sessionId || !conversationRecap) {
+  //   return res.status(400).json({ error: "Session ID and conversation recap required." });
+  // }
+  // const db = req.app.locals.db;
+  // const assistantRecap = await getAssitantFileSearch(conversationRecap);
+  // try {
+  //   const session = await db.get(`SELECT * FROM sessions WHERE sessionId = ?`, [sessionId]);
+  //   if (!session) {
+  //     return res.status(400).json({ error: "Invalid session. Start a new conversation." });
+  //   }
 
-    // await db.run(
-    //   `INSERT INTO conversation (sessionId, role, message) VALUES (?, ?, ?)`,
-    //   [sessionId, 'user', conversationRecap]
-    // );
+  //   await db.run(
+  //     `INSERT INTO conversation (sessionId, role, message) VALUES (?, ?, ?)`,
+  //     [sessionId, 'user', conversationRecap]
+  //   );
 
-    // await db.run(
-    //   `INSERT INTO conversation (sessionId, role, message) VALUES (?, ?, ?)`,
-    //   [sessionId, 'ai', assistantRecap]
-    // );
+  //   await db.run(
+  //     `INSERT INTO conversation (sessionId, role, message) VALUES (?, ?, ?)`,
+  //     [sessionId, 'ai', assistantRecap]
+  //   );
 
-    res.json({ message: assistantRecap });
-  } catch (error) {
-    console.error("Error ending recommendation:", error);
-    res.status(500).json({ error: "Internal server error." });
-  }
+  //   res.json({ message: assistantRecap });
+  // } catch (error) {
+  //   console.error("Error ending recommendation:", error);
+  //   res.status(500).json({ error: "Internal server error." });
+  // }
 }
